@@ -70,15 +70,18 @@ public class Tool extends Equippable {
     public int requiredNumberOfValues()
     {
         // What is the correct return value?
-        return -1;
+        return 6;
     }
 
     @Override
     public void fromTokens(String[] tokens)
     {
         this.setName(tokens[0]);
-
-        // Complete this method.
+        this.setMaterial(tokens[1]);
+        this.setDurability(Integer.parseInt(tokens[2]));
+        this.setSpeed(Integer.parseInt(tokens[3]));
+        this.setModifier(tokens[4]);
+        this.setModifierLevel(Integer.parseInt(tokens[5]));
 
     }
 
@@ -111,13 +114,16 @@ public class Tool extends Equippable {
     public boolean equals(Object rhs)
     {
         if (!(rhs instanceof Tool)) {
-            return false;
-        }
-
-        Tool rhsItem = (Tool) rhs;
-
-        // Replace the return
         return false;
+    }
+
+        Tool other = (Tool) rhs;
+
+        return this.getName().equals(other.getName())
+            && this.getSpeed() == other.getSpeed()
+            && this.getMaterial().equals(other.getMaterial())
+            && this.getModifier().equals(other.getModifier())
+            && this.getModifierLevel() == other.getModifierLevel();
     }
 
     /**
@@ -127,8 +133,13 @@ public class Tool extends Equippable {
     @Override
     public int hashCode()
     {
-        // Replace the return
-        return -1;
+        return java.util.Objects.hash(
+        this.getName(),
+        this.getSpeed(),
+        this.getMaterial(),
+        this.getModifier(),
+        this.getModifierLevel()
+        );
     }
 
     /**
@@ -137,7 +148,14 @@ public class Tool extends Equippable {
     @Override
     public String toString()
     {
-        // Use String.format and the provided FMT_STR
-        return "  Not Implemented";
+        return String.format(
+        FMT_STR,
+        this.getName(),
+        this.getDurability(),
+        this.getSpeed(),
+        this.getMaterial(),
+        this.getModifier(),
+        this.getModifierLevel()
+        );
     }
 }
