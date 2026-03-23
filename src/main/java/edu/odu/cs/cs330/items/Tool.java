@@ -94,7 +94,6 @@ public class Tool extends Equippable {
         Tool cpy = new Tool();
 
         cpy.setName(this.name);
-
         cpy.setDurability(this.getDurability());
         cpy.setSpeed(this.speed);
         cpy.setMaterial(this.getMaterial());
